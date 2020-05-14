@@ -47,6 +47,29 @@ public class CarWash {
 
 	@Column(name = "payment_status")
 	private String paymentStatus;
+	
+	@Column(name = "package_type")
+	private String packageTpe;
+	
+	@Column(name = "amount")
+	private Double amount;
+	
+
+	public String getPackageTpe() {
+	    return packageTpe;
+	}
+
+	public void setPackageTpe(String packageTpe) {
+	    this.packageTpe = packageTpe;
+	}
+
+	public Double getAmount() {
+	    return amount;
+	}
+
+	public void setAmount(Double amount) {
+	    this.amount = amount;
+	}
 
 	public int getId() {
 	    return id;

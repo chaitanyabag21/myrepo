@@ -102,7 +102,7 @@ public class RegisterController {
 		User user = userServiceImpl.findByConfirmationToken(token);
 
 		// Set new password
-		user.setPassword(bCryptPasswordEncoder.encode(password));
+		user.setPassword(password);
 
 		// Set user to enabled
 		user.setEnabled(true);
@@ -121,7 +121,7 @@ public class RegisterController {
 		    LoginResponse.setAuthenticated(false);
 		    LoginResponse.setValidUser(false);
 		} else { // Token found
-		   if( bCryptPasswordEncoder.encode(password).equals(user.getPassword())) {
+		   if( password.equals(user.getPassword())) {
 		       LoginResponse.setAuthenticated(true);
 		   }
 		}

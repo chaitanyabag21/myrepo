@@ -40,6 +40,17 @@ public class User {
 	@Column(name = "enabled")
 	private boolean enabled;
 	
+	@Column(name = "userType")
+	private String userType;
+	
+	public String getUserType() {
+	    return userType;
+	}
+
+	public void setUserType(String userType) {
+	    this.userType = userType;
+	}
+
 	@Column(name = "confirmation_token")
 	private String confirmationToken;
 
