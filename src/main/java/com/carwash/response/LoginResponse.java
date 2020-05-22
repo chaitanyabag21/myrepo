@@ -9,26 +9,19 @@ package com.carwash.response;
  */
 public class LoginResponse {
     private boolean isAuthenticated;
-    private boolean fullName;
-    private boolean isValidUser;
+    private String fullName;
     
-    public boolean isValidUser() {
-        return isValidUser;
-    }
-    public void setValidUser(boolean isValidUser) {
-        this.isValidUser = isValidUser;
-    }
     public boolean isAuthenticated() {
         return isAuthenticated;
     }
     public void setAuthenticated(boolean isAuthenticated) {
         this.isAuthenticated = isAuthenticated;
     }
-    public boolean isFullName() {
+    public String getFullName() {
         return fullName;
     }
-    public void setFullName(boolean fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
+   
 }

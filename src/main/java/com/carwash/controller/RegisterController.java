@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.carwash.model.User;
+import com.carwash.request.UserRequest;
 import com.carwash.response.ConfirmRegistrationResponse;
 import com.carwash.response.LoginResponse;
 import com.carwash.response.RegistrationResponse;
@@ -39,11 +40,16 @@ public class RegisterController {
 	
 	// Process form input data
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public RegistrationResponse register(@RequestBody User user) {
+	public RegistrationResponse register(@RequestBody UserRequest userRequest) {
 			
 	    RegistrationResponse registrationResponse = new RegistrationResponse();
+	    User user = new User();
+	    user.setEmail(userRequest.getEmail());
+	    user.setFirstName(userRequest.getFirstName());
+	    user.setPassword(userRequest.getPassword());
+	    user.setLastName(userRequest.getLastName());
 		// Lookup user in database by e-mail
-		User userExists = userServiceImpl.findByEmail(user.getEmail());
+		User userExists = userServiceImpl.findByEmail(userRequest.getEmail());
 		
 		System.out.println(userExists);
 		
@@ -119,10 +125,10 @@ public class RegisterController {
 		User user = userServiceImpl.findByEmail(userName);
 		if (user == null) { // No token found in DB
 		    LoginResponse.setAuthenticated(false);
-		    LoginResponse.setValidUser(false);
 		} else { // Token found
 		   if( password.equals(user.getPassword())) {
 		       LoginResponse.setAuthenticated(true);
+		       LoginResponse.setFullName(user.getFirstName()+" "+user.getLastName());
 		   }
 		}
 
